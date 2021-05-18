@@ -6,14 +6,14 @@ The Multi Earth and Atmospheric data Recorder (Multi-EAR); a mobile low-cost mul
 
 A collabarotive project between the Royal Netherlands Meteorological Institute (KNMI) and Delft University of Technology (TU Delft).
 
-Auke Barnhoorn (TUD), Jens van den Berg (TUD), Mathijs Koymans (KNMI/TUD), Olivier den Ouden (KNMI/TUD), Pieter Smets (TUD/KNMI).
+<sub><sup>Auke Barnhoorn (TUD), Jens van den Berg (TUD), Mathijs Koymans (KNMI/TUD), Olivier den Ouden (KNMI/TUD), Pieter Smets (TUD/KNMI)</sup></sub>
 
 <hr/>
 
 The Mulit-EAR is an extension of the <a href="https://amt.copernicus.org/articles/14/3301/2021/amt-14-3301-2021-discussion.html">INFRA-EAR</a>, which is a multidiciplinairy sensor platform for the monitoring of geophysical parameters, and especially designed to fit a Wandering Albatros. Both platform uses various digital MEMS sensors embedded on a Printed Circuit Board (PCB). Micro-electromechanical systems (MEMS) are small single-chip sensors that combine electrical and mechanical components and have low energy consumption. A programmable microcontroller unit, as well embedded on the PCB, controls the sensors’ sampling frequency and establishes the energy supply for the sensors and the data-communication and storage. A waterproof casing protects the platform against the weather. Because of its low power consumption, the system can be powered by a battery, solar panel, or an external power supply.
 
 ## PCB design
-#### Sensors
+#### Hardware
 The platform contains a PCB created to embed the MEMS sensors and facilitate the electrical circuits. The PCB carries two differential pressure sensor, a 6-axis acclerometer/gyroscope, a 6-axis accelerometer/magnetometer, a barometric pressure sensor, a temperature/humidity sensor, microphones, and has in addition a GPS for location and timing purposes, and LoRa telecomunication for data exchange. The sensors are controlled by a MSP430 microcontroller, which is integrated on the PCB.
 
 #### Firmware
