@@ -9,6 +9,11 @@
 
 * ICS40300
 
+## Barometer
+
+* LPS33HW
+
+
 ## Accelerometers
 
 * LSM303
