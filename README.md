@@ -6,7 +6,7 @@ The Multi Earth and Atmospheric data Recorder (Multi-EAR); a mobile low-cost mul
 
 A collabarotive project between the Royal Netherlands Meteorological Institute (KNMI) and Delft University of Technology (TU Delft).
 
-<sub><sup>Auke Barnhoorn (TUD), Jens van den Berg (TUD), Mathijs Koymans (KNMI/TUD), Olivier den Ouden (KNMI/TUD), Pieter Smets (TUD/KNMI)</sup></sub>
+<sub><sup>Auke Barnhoorn (TUD), Jens van den Berg (TUD), Olivier den Ouden (KNMI/TUD), Pieter Smets (TUD/KNMI), Laslo Evers (TUD/KNMI), Jelle Assink (KNMI), Elliot Donata (Min. IenW), Gijs Schouwenberg (Min. IenW)</sup></sub>
 
 <hr/>
 
