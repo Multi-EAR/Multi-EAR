@@ -1,3 +1,5 @@
-# Raspberry Pi
+# Raspberry Pi - external datalogger
+The microcontroller communicates in two ways with the MEMS. After sampling, the MEMS send their data back to the microcontroller. The data can either be stored locally on the PCB, using a micro-SD card, or sent through UART serial communication. The PCB embeds GPIO pins, which allow UART communication. The GPIO allows a connection between the PCB and a Raspberry Pi (RPi, \cite{RPi}), and thus the data communication between both. The RPi can therefore act as a small datalogger. The RPi receives on a pre-specified baud-rate the data in bytes, when after the data can either be formatted to floats, integer, or actual units, before sending it to the server (Appendix B).
 
-Rasbian lite SD-image info
+The RPi is a small single-board computer and has all the usual connections (i.e., HDMI, USB, Micro-USB). The operating system on the RPi's of the Multi-EAR is 'raspbian-lite' and can connect with WiFi. The data can be transferred towards an external device via WiFi or an SSH connection (Appendix C). 
+
