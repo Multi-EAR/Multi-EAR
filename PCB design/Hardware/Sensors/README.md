@@ -1,44 +1,39 @@
-# Sensors on the PCB
+# Sensors
 
-## Infrasound sensors
+## Sound sensors
+The human audible sound spectrum is approximately between 20 to 20,000 Hz. Frequencies below 20 Hz or above 20 kHz are referred to as infrasound and ultrasound, respectively. The movement of large air volumes generates infrasound signals with amplitudes in millipascals' range to tens of pascals. Examples of infrasound sources include earthquakes, lightning, meteors, nuclear explosions, interfering oceanic waves and surf (\cite{campus2010worldwide}). Detection of infrasound depends on the signal's strength relative to the noise levels at a remote sensor (array), i.e., the signal-to-noise ratio. The signal strength depends, in turn, on the transmission loss that a signal experiences while propagating from source to receiver (\cite{waxler2019propagation}). Local wind noise conditions predominantly determine the noise (\cite{raspet2019new}), in addition to the sensor self-noise. Due to the presence of atmospheric waveguides and low absorption at the infrasonic frequency (\cite{sutherland2004atmospheric}), infrasonic signals can be detected at long distances from an infrasonic source. Assumed that the source levels are sufficiently high so that the long-range signal is above the ambient noise conditions on the receiver side, and the sensor is sensitive enough to detect the signal.
 
-* DLVR F50D
-* Superior Sensor SP200
+### Infrasound
+The infrasonic wavefield is conventionally measured with pressure transducers since such scalar measurements are relatively easy to perform. Those measurements can either be performed by absolute or differential pressure sensors. An absolute pressure sensor consists of a sealed aneroid and a measuring cavity connected to the atmosphere. A pressure difference within the measuring cavity will deflect the aneroid capsule. The mechanical deflection is converted to a voltage (\cite{haak1996microbarograph}). The measurement principle of a differential infrasound sensor relies on the deflection of a compliant diaphragm, which is mounted on a cavity inside the sensor. The membrane deflects due to a pressure difference inside and outside the microphone, which occurs when a sound wave passes. A pressure equalization vent is part of the design to make the microphone insensitive to slowly varying pressure differences originating from long-period changes in weather conditions (\cite{ponceau2010low}).  
 
-## Audible sensors
+Various studies show sensor self-noise and sensitivity curves of infrasound sensors (\cite{ponceau2010low,merchant2015hyperion,slad2016chaparral,marty2019ims,nief2019new}). The IMS specifications state that the sensor self-noise should be at least 18 dB below the global low noise curves at 1 Hz (\cite{brown2014idc}), generated from global infrasound measurements using the IMS. Typical infrasound sensor networks, such as the IMS, use analogue sensors connected to a separate data logger to convert the measured voltage differences to a digital signal. The sensor's characteristic sensitivity determines the sensor resolution, i.e., the smallest difference that the sensor can detect. The resolution of the built-in analogue-to-digital converters (ADC) and the digitizing voltage range determine the datalogger's resolution. Current state-of-the-art data loggers have a 24-bit resolution. New infrasound sensor techniques involve digital outputs since the ADC conversion is realized inside the sensor (\cite{nief2017new,nief2019new}). 
 
-* ICS40300
+The design of this instrument is based on the following requirements. The sensor should have a flat, linear response over a wide infrasonic frequency band, e.g., 0.05 - 10 Hz. The sensor should be sensitive to the range of pressure perturbations in this frequency band, ranging from millipascals to tens of pascals. Moreover, the sensor and logging components' self-noise should be below the ambient noise levels of the IMS (\cite{brown2014idc}). Taking this into account, the sensor requires as well to be low-cost (i.e., tens of dollars), small in dimensions (i.e., millimeter), and have a low energy consumption (i.e., milliampere). 
 
-## Barometer
+The measurement principle relies on the deflection of a diaphragm, which is mounted between two inlets. One inlet is connected to the atmosphere, while the other is connected to a cavity. The digital MEMS DLVR-F50D differential pressure sensor from All Sensors Inc (\cite{DLVR}) is used as a sensing element within the mini-MB. This sensor has a 16.5mm x 13.0mm x 7.3mm dimension and a linear response between $\pm$ 125 Pa and a maximum error band of $\pm 0.7$ Pa. A Wheatstone bridge senses the diaphragm's deflection by measuring the changes in the piezo-resistive elements attached to the diaphragm. The sensor's output is an analogue voltage, which is subsequently digitized by the built-in 14-bit ADC, offering a maximum resolution of $0.02$ Pa/count.
 
-* LPS33HW
+### Audible sound
+For the monitoring of the audible sound spectrum, three ICS-40300 microphones are embedded on the PCB (\cite{ICS40300}). These microphones are low-noise, high SPL MEMS microphones with an extended low-frequency response. The frequency response can be extended from $6-20\text{k}$ Hz and has a flat response between $50-2500$ Hz. Thanks to this frequency range, combining the infrasound sensor and the microphones results in an excellent phase and amplitude characteristic within a broad frequency range (0.075 - 20k Hz). The maximum SPL level of the microphones is 130dB before the overload is reached. 
+
+The measurements of the microphones are by default stored as RMS dB SPL level over the entire frequency range. Whenever an RPi is used as a datalogger, there is an option to store the entire time series recording.
+
+## Meteorological sensors
+The detectability of infrasound is directly linked to wind noise conditions and the atmosphere's stability in the infrasound sensor's surrounding since noise levels are increased when turbulence levels are high. Therefore, it is beneficial to have simultaneous measurements of the basic meteorological parameters, i.e., pressure, humidity and temperature. The sub-sections below describe the different meteorological measurements contained on the sensor platform.
+
+### Barometer
+The barometric pressure is sensed by the LPS33HW sensor (\cite{LPS33HW}). The measuring principle relies on piezo-resistive crystals. The atmospheric pressure applies a force to the sensor, which causes the crystals to vibrate. Whenever piezo-resisitve crystals have contact, or a force is applied to the, a small voltage is released.
+
+The sensor design is analoge, using voltages to derive the geophysical units. However, this MEMS has an in-built 14-bits ADC. The ADC bits and the precision of the crystals determine the self-noise of the sensor. Whenever the self-noise is higher as the actual change in atmospheric pressure, it will not be resolved by the sensor. The manufacturer states that the relative error of the sensor is $\pm 0.1$hPa. However, the absolute error can be larger. Therefore a calibration need to be performed on these sensors, to remove the absolute error. \cite{den2020low} stated that after calibration the sensor can indeed have an accuracy of $\pm 0.1$ hPa.
+
+### Temperature/Humidity
+The SHT8x sensor measures the temperature and humidity at the PCB (\cite{SHT8x}). The SHT8x is a temperature and humidity sensor with a pin-type connector. This connector allows easy integration and replacement of the sensor. Furthermore, it allows for the best possible thermal coupling to the environment and decoupling from potential heat sources on the PCB. The sensing is done by the SHT3x sensor, which is part of the SHT8x set-up. The SHT8x has an in-built 16-bit ADC.
+
+The humidity is sensed over the range of $0-100\pm$. The SHT3x has a resolution of $0.01 \pm$, with a relative error of $1.5 \pm$. The absolute error needs to be determined by calibration.
+
+The operating range of the temperature sensor is between $-40 - 105^{\circ}$C. The resolution is $0.01^{\circ}$C, with a relative error of $0.3^{\circ}$C while operating over the entire temperature range.
 
 
-## Accelerometers
+## Inertial measurement units
+The sensing element of the infrasound sensor on this platform is a sensitive diaphragm. Strong accelerations of the platform will cause a deflection of the diaphragm and may obscure infrasonic signal levels. In addition, such accelerations may be misinterpreted as infrasound if no independent accelerometer information is available. To be able to separate the mechanical response of the sensor from actual signals of interest, the platform measures accelerations for which the LSM303 (\cite{LSM303}), a 6-axis inertial measurement unit, and LIS3DH (\cite{LIS3DH}), as well a 6-axis inertial measurement unit, are deployed. The LSM303 consists of a 3-axis accelerometer and 3-axis magnetometer. The LIS3DH is a 3-axis accelerometer and 3-axis gyroscope. The measurement range of both accelerometers varies between 2-16 g.
 
-* LSM303
-* xx
-
-## Gyroscope
-
-* xx
-
-## Magnetometer
-
-* LSM303
-
-## Temperature/Humidity
-
-* SHT8x
-
-## GPS
-
-* GNSxx
-
-## LoRa
-
-* xx
-
-## Microcontroller
-
-* MSP430
+Accelerometers measure differential movement between the gravitational field vector and its reference frame. In the absence of linear acceleration, the sensor measures the rotated gravitational field vector, which can be used to calibrate the sensor. A rotational movement of the sensor will result in acceleration. Both MEMS are digital sensor with built-in ADC's of 16-bit. This results in a resolution of 0.06 mg when choosing the lowest measurement range. 
