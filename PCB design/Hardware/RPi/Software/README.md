@@ -8,3 +8,15 @@
 (6) Import the python scripts: "UART_readout.py" and GEOPHYS_unit_convert.py" and add these to the "UART" folder. \
 (7) Create a crontab at reboot: "@reboot python3 /home/pi/UART/UART_readout.py" \
 (8) Reboot the RPi ~ the sensorplatform and RPi start logging data whenever the RPi is booted.
+
+
+or
+
+(2) connect the RPi direct to the TU Delft PC
+(3) in Putty conntect to: "raspberrypi.local"
+(4) login with "pi", and "raspberry"
+(3) Go to the terminal and: "sudo raspi-config"
+(4) enable SSH
+(5) enable Serial
+(6) Connect to WiFi by importing the modified "wpa_config.conf" file
+(7) Continue from step (5) above!
