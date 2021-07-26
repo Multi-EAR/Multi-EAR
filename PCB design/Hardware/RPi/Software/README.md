@@ -6,6 +6,5 @@
 (4) Boot the RPi, and create the SSH connection \
 (5) Create two folders: "/home/pi/UART" and "/home/pi/Data". \
 (6) Import the python scripts: "UART_readout.py" and GEOPHYS_unit_convert.py" and add these to the "UART" folder. \
-(7) Go into the "rc.local" file: "sudo nano /etc/rc.local" \
-(8) Add within this file the line: "python3 /home/pi/UART/UART_readout.py &" \
-(9) Reboot the RPi ~ the sensorplatform and RPi start logging data whenever the RPi is booted.
+(7) Create a crontab at reboot: "@reboot python3 /home/pi/UART/UART_readout.py" \
+(8) Reboot the RPi ~ the sensorplatform and RPi start logging data whenever the RPi is booted.
