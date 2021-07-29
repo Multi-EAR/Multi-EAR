@@ -13,7 +13,7 @@ Knowledge about the IP-adres of the RPi on your local network can be obtained fr
 Thanks to a pre-check the RPi is enabled to acces via SSH. This can be done via Putty (Windows) or the Terminal (UNIX/Mac). 
 
 ## (2) External connection with computer 
-**NOTE! Remove first the Multi-EAR extension PCB!** 
+**NOTE! First remove the Multi-EAR extension PCB!** 
 
 A different approach is by connecting the RPi with a MicroSD-USB cable to your computer. The RPi is booted thanks to the power supply form the computer. Again via Putty or the Terminal you can now directly SSH towards the RPi. This is done by using the local IP adres:
 	raspberrypi.local
